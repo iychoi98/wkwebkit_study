@@ -33,7 +33,7 @@ class WebViewController: UIViewController {
     }
 }
 
-extension WebViewController: WKUIDelegate, WKNavigationDelegate {
+extension WebViewController {
     func initWebView() {
         wkWebView.uiDelegate = self
         wkWebView.navigationDelegate = self
@@ -45,28 +45,66 @@ extension WebViewController: WKUIDelegate, WKNavigationDelegate {
         
         wkWebView.load(request)
     }
+    
+    private func backPage() {
+        if wkWebView.canGoBack {
+            wkWebView.goBack()
+        } else {
+            print("no back page")
+        }
+    }
+    
+    private func forwardPage() {
+        if wkWebView.canGoForward {
+            wkWebView.goForward()
+        } else {
+            print("no forward page")
+        }
+    }
+    
+    private func homePage() {
+        guard let url = URL(string: "https://www.google.co.kr") else { return }
+        let request = URLRequest(url: url)
+        
+        wkWebView.load(request)
+    }
+    
+    private func resetPage() {
+        wkWebView.reload()
+    }
+    
 }
 
 extension WebViewController {
     private func bindAction() {
         backButton.rx.tap
             .bind {
-                print("backBtn")
+                self.backPage()
             }.disposed(by: disposeBag)
         
         forwardButton.rx.tap
             .bind {
-                print("forwardBtn")
+                self.forwardPage()
             }.disposed(by: disposeBag)
         
         homeButton.rx.tap
             .bind {
-                print("homeBtn")
+                self.homePage()
             }.disposed(by: disposeBag)
         
         resetButton.rx.tap
             .bind {
-                print("resetBtn")
+                self.resetPage()
             }.disposed(by: disposeBag)
     }
+}
+
+//MARK: - WKUIDelegate 관련 함수
+extension WebViewController: WKUIDelegate {
+    
+}
+
+//MARK: - WKNavigationDelegate 관련 함수
+extension WebViewController: WKNavigationDelegate {
+    
 }
