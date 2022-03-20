@@ -46,27 +46,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxp-MR-6vc">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3SL-Mi-WOw">
+                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRu-xs-k9x">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rh-Ju-7bO">
+                                        <rect key="frame" x="12" y="9.5" width="30" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="sP8-h7-XUG"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.left" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeB-JP-bbX">
+                                        <rect key="frame" x="54" y="9.5" width="30" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="yAL-Mb-rkV"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.right" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejX-dm-EPX">
+                                        <rect key="frame" x="192" y="9.5" width="30" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="F03-xn-kxS"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="homekit" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIb-mf-AxS">
+                                        <rect key="frame" x="372" y="9.5" width="30" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="xBm-j6-aV3"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="repeat" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="aIb-mf-AxS" firstAttribute="centerY" secondItem="CRu-xs-k9x" secondAttribute="centerY" id="98x-am-VGG"/>
+                                    <constraint firstItem="ejX-dm-EPX" firstAttribute="centerX" secondItem="CRu-xs-k9x" secondAttribute="centerX" id="BRt-c1-DGd"/>
+                                    <constraint firstItem="ejX-dm-EPX" firstAttribute="centerY" secondItem="CRu-xs-k9x" secondAttribute="centerY" id="GNE-Yj-8tj"/>
+                                    <constraint firstItem="HeB-JP-bbX" firstAttribute="leading" secondItem="4rh-Ju-7bO" secondAttribute="trailing" constant="12" id="LNm-yE-cPM"/>
+                                    <constraint firstItem="4rh-Ju-7bO" firstAttribute="leading" secondItem="CRu-xs-k9x" secondAttribute="leading" constant="12" id="bZ3-TU-AT5"/>
+                                    <constraint firstItem="4rh-Ju-7bO" firstAttribute="centerY" secondItem="CRu-xs-k9x" secondAttribute="centerY" id="g5Q-GS-PU7"/>
+                                    <constraint firstAttribute="trailing" secondItem="aIb-mf-AxS" secondAttribute="trailing" constant="12" id="qKs-2h-ngp"/>
+                                    <constraint firstAttribute="height" constant="50" id="yjF-M9-4I8"/>
+                                    <constraint firstItem="HeB-JP-bbX" firstAttribute="centerY" secondItem="CRu-xs-k9x" secondAttribute="centerY" id="zhZ-YD-6B8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="azL-g2-Dtl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="azL-g2-Dtl" firstAttribute="bottom" secondItem="gxp-MR-6vc" secondAttribute="bottom" id="2f7-wh-GKA"/>
-                            <constraint firstItem="gxp-MR-6vc" firstAttribute="leading" secondItem="azL-g2-Dtl" secondAttribute="leading" id="Rkg-CC-rUa"/>
-                            <constraint firstItem="gxp-MR-6vc" firstAttribute="top" secondItem="azL-g2-Dtl" secondAttribute="top" id="fyn-qW-q41"/>
-                            <constraint firstItem="azL-g2-Dtl" firstAttribute="trailing" secondItem="gxp-MR-6vc" secondAttribute="trailing" id="rCb-gH-Y52"/>
+                            <constraint firstItem="3SL-Mi-WOw" firstAttribute="leading" secondItem="azL-g2-Dtl" secondAttribute="leading" id="Qqg-Kc-al3"/>
+                            <constraint firstItem="CRu-xs-k9x" firstAttribute="top" secondItem="3SL-Mi-WOw" secondAttribute="bottom" id="ZxC-Ce-lcP"/>
+                            <constraint firstItem="3SL-Mi-WOw" firstAttribute="top" secondItem="azL-g2-Dtl" secondAttribute="top" id="e2P-QR-2cS"/>
+                            <constraint firstItem="azL-g2-Dtl" firstAttribute="trailing" secondItem="3SL-Mi-WOw" secondAttribute="trailing" id="hIP-FU-hol"/>
+                            <constraint firstItem="azL-g2-Dtl" firstAttribute="trailing" secondItem="CRu-xs-k9x" secondAttribute="trailing" id="prS-DL-AbI"/>
+                            <constraint firstItem="CRu-xs-k9x" firstAttribute="leading" secondItem="azL-g2-Dtl" secondAttribute="leading" id="qxD-pd-fom"/>
+                            <constraint firstItem="azL-g2-Dtl" firstAttribute="bottom" secondItem="CRu-xs-k9x" secondAttribute="bottom" id="vSS-Ll-leW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fSR-P3-B2S"/>
                     <connections>
-                        <outlet property="wkWebView" destination="gxp-MR-6vc" id="tEq-w3-BDu"/>
+                        <outlet property="wkWebView" destination="3SL-Mi-WOw" id="DhX-2j-zVL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAR-6l-SeR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -93,6 +145,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="homekit" catalog="system" width="128" height="106"/>
+        <image name="repeat" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

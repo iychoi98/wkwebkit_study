@@ -15,18 +15,23 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         initWebView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadUrl()
+    }
 }
 
 extension WebViewController: WKUIDelegate, WKNavigationDelegate {
     func initWebView() {
-        view.addSubview(wkWebView)
-        
+        wkWebView.uiDelegate = self
+        wkWebView.navigationDelegate = self
+    }
+    
+    func loadUrl() {
         guard let url = URL(string: "https://www.google.co.kr") else { return }
         let request = URLRequest(url: url)
         
         wkWebView.load(request)
-        
-        wkWebView.uiDelegate = self
-        wkWebView.navigationDelegate = self
     }
 }
