@@ -118,6 +118,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="fSR-P3-B2S"/>
                     <connections>
+                        <outlet property="backButton" destination="4rh-Ju-7bO" id="gbj-rF-Ekv"/>
+                        <outlet property="forwardButton" destination="HeB-JP-bbX" id="BmO-kg-oTo"/>
+                        <outlet property="homeButton" destination="ejX-dm-EPX" id="zBc-mo-ioY"/>
+                        <outlet property="resetButton" destination="aIb-mf-AxS" id="eos-lk-j4Q"/>
                         <outlet property="wkWebView" destination="3SL-Mi-WOw" id="DhX-2j-zVL"/>
                     </connections>
                 </viewController>
