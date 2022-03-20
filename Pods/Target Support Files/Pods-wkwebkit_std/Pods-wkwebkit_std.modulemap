@@ -1,0 +1,6 @@
+framework module Pods_wkwebkit_std {
+  umbrella header "Pods-wkwebkit_std-umbrella.h"
+
+  export *
+  module * { export * }
+}
