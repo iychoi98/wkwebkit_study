@@ -101,10 +101,28 @@ extension WebViewController {
 
 //MARK: - WKUIDelegate 관련 함수
 extension WebViewController: WKUIDelegate {
+    func webViewDidClose(_ webView: WKWebView) {
+        <#code#>
+    }
     
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        <#code#>
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async {
+        <#code#>
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async -> Bool {
+        <#code#>
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo) async -> String? {
+        <#code#>
+    }
 }
 
 //MARK: - WKNavigationDelegate 관련 함수
 extension WebViewController: WKNavigationDelegate {
-    
+
 }
