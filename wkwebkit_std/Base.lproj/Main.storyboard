@@ -45,10 +45,29 @@
                     <view key="view" contentMode="scaleToFill" id="MnU-2c-wbN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxp-MR-6vc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="azL-g2-Dtl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="azL-g2-Dtl" firstAttribute="bottom" secondItem="gxp-MR-6vc" secondAttribute="bottom" id="2f7-wh-GKA"/>
+                            <constraint firstItem="gxp-MR-6vc" firstAttribute="leading" secondItem="azL-g2-Dtl" secondAttribute="leading" id="Rkg-CC-rUa"/>
+                            <constraint firstItem="gxp-MR-6vc" firstAttribute="top" secondItem="azL-g2-Dtl" secondAttribute="top" id="fyn-qW-q41"/>
+                            <constraint firstItem="azL-g2-Dtl" firstAttribute="trailing" secondItem="gxp-MR-6vc" secondAttribute="trailing" id="rCb-gH-Y52"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fSR-P3-B2S"/>
+                    <connections>
+                        <outlet property="wkWebView" destination="gxp-MR-6vc" id="tEq-w3-BDu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAR-6l-SeR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
