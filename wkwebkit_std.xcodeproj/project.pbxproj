@@ -17,6 +17,7 @@
 		F4A4735A27E7761500429EF6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4735927E7761500429EF6 /* WebViewController.swift */; };
 		F4A4735E27E77E0600429EF6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A4735D27E77E0600429EF6 /* WebKit.framework */; };
 		F4A4736027E819E200429EF6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4735F27E819E200429EF6 /* Reachability.swift */; };
+		F4A4736227E86AE000429EF6 /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4736127E86AE000429EF6 /* SubViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		F4A4735927E7761500429EF6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F4A4735D27E77E0600429EF6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4A4735F27E819E200429EF6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		F4A4736127E86AE000429EF6 /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				F4A4734927E774F400429EF6 /* MainViewController.swift */,
 				F4A4735927E7761500429EF6 /* WebViewController.swift */,
+				F4A4736127E86AE000429EF6 /* SubViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				F4A4734A27E774F400429EF6 /* MainViewController.swift in Sources */,
 				F4A4734627E774F400429EF6 /* AppDelegate.swift in Sources */,
 				F4A4734827E774F400429EF6 /* SceneDelegate.swift in Sources */,
+				F4A4736227E86AE000429EF6 /* SubViewController.swift in Sources */,
 				F4A4736027E819E200429EF6 /* Reachability.swift in Sources */,
 				F4A4735A27E7761500429EF6 /* WebViewController.swift in Sources */,
 			);

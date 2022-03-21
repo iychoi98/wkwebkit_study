@@ -24,6 +24,11 @@ class WebViewController: UIViewController {
     
     var popupWebView: WKWebView?
     
+    static func instance() -> WebViewController {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        return vc
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initWebView()
@@ -183,10 +188,14 @@ extension WebViewController: WKNavigationDelegate {
         
         if url.scheme == "https" || url.scheme == "http" {
             decisionHandler(.allow)
-            return
+        } else if (url.scheme == "about") {
+            print("about:blank")
+            decisionHandler(.allow)
         } else {
-            decisionHandler(.cancel)
-            return
+            decisionHandler(.allow)
+            
+            let vc = SubViewController.instance()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
