@@ -16,6 +16,7 @@
 		F4A4735227E774F600429EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4A4735027E774F600429EF6 /* LaunchScreen.storyboard */; };
 		F4A4735A27E7761500429EF6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4735927E7761500429EF6 /* WebViewController.swift */; };
 		F4A4735E27E77E0600429EF6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A4735D27E77E0600429EF6 /* WebKit.framework */; };
+		F4A4736027E819E200429EF6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A4735F27E819E200429EF6 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F4A4735327E774F600429EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4A4735927E7761500429EF6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F4A4735D27E77E0600429EF6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F4A4735F27E819E200429EF6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,6 @@
 				89F85948AFB60EECBA7D0FAB /* Pods-wkwebkit_std.debug.xcconfig */,
 				DE6CE258D63AC3FAB0829FD3 /* Pods-wkwebkit_std.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				F4A4735B27E7761B00429EF6 /* ViewControllers */,
+				F4A4735F27E819E200429EF6 /* Reachability.swift */,
 				F4A4734B27E774F400429EF6 /* Main.storyboard */,
 				F4A4734527E774F400429EF6 /* AppDelegate.swift */,
 				F4A4734727E774F400429EF6 /* SceneDelegate.swift */,
@@ -225,6 +227,7 @@
 				F4A4734A27E774F400429EF6 /* MainViewController.swift in Sources */,
 				F4A4734627E774F400429EF6 /* AppDelegate.swift in Sources */,
 				F4A4734827E774F400429EF6 /* SceneDelegate.swift in Sources */,
+				F4A4736027E819E200429EF6 /* Reachability.swift in Sources */,
 				F4A4735A27E7761500429EF6 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GC832ANS5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wkwebkit_std/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -403,6 +407,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3GC832ANS5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = wkwebkit_std/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
