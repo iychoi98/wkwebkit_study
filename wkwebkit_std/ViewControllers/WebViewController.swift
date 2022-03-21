@@ -173,13 +173,57 @@ extension WebViewController: WKUIDelegate {
 //MARK: - WKNavigationDelegate 관련 함수
 extension WebViewController: WKNavigationDelegate {
     
-    //들어온 링크 확인
+    //탐색 취소를 허용할 것인지에 대해 결정 (스킴 처리)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         guard let url = navigationAction.request.url else {
             decisionHandler(.cancel)
             return
         }
         
+        print("들어온 url \(url)")
         decisionHandler(.allow)
     }
+    
+    //응답이 수신된 후 탐색을 허용할지 아니면 취소할지 결정
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        print("탐색 허용 및 취소")
+        
+        decisionHandler(.allow)
+    }
+    
+    //웹뷰가 웹 컨텐츠를 수신하기 시작했을 때 호출
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print("Commit")
+    }
+    
+    //웹 뷰에 웹 컨텐츠가 불러와지기 시작할 때
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("provision")
+    }
+    
+    //웹 뷰가 서버 redirect를 수신했을 때 호출
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        print("didReceiveRedirect")
+    }
+    
+    //웹 뷰가 인증 문제에 응답해야할 때 호출
+//    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//        print("인증 문제")
+//    }
+    
+    //탐색 도중 오류가 발생했을 때 호출
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("탐색 중 오류")
+    }
+    
+    //탐색 완료
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("탐색 완료")
+    }
+    
+    //웹 컨텐츠 종료
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        print("웹 컨텐츠 종료")
+    }
+    
 }
