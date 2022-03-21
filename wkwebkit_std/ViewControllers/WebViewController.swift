@@ -20,6 +20,7 @@ class WebViewController: UIViewController {
     @IBOutlet weak var resetButton: UIButton!
     
     private let disposeBag = DisposeBag()
+    private weak var webConfigure: WKWebViewConfiguration?
     
     var popupWebView: WKWebView?
     
@@ -180,8 +181,13 @@ extension WebViewController: WKNavigationDelegate {
             return
         }
         
-        print("들어온 url \(url)")
-        decisionHandler(.allow)
+        if url.scheme == "https" || url.scheme == "http" {
+            decisionHandler(.allow)
+            return
+        } else {
+            decisionHandler(.cancel)
+            return
+        }
     }
     
     //응답이 수신된 후 탐색을 허용할지 아니면 취소할지 결정
@@ -198,7 +204,7 @@ extension WebViewController: WKNavigationDelegate {
     
     //웹 뷰에 웹 컨텐츠가 불러와지기 시작할 때
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("provision")
+        print("StartProvision")
     }
     
     //웹 뷰가 서버 redirect를 수신했을 때 호출
