@@ -21,6 +21,8 @@ class WebViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    var popupWebView: WKWebView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initWebView()
@@ -101,28 +103,48 @@ extension WebViewController {
 
 //MARK: - WKUIDelegate 관련 함수
 extension WebViewController: WKUIDelegate {
-    func webViewDidClose(_ webView: WKWebView) {
-        <#code#>
-    }
     
+    //새 탭 열리는 부분 처리
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        <#code#>
+        popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+        popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popupWebView?.navigationDelegate = self
+        popupWebView?.uiDelegate = self
+        view.addSubview(popupWebView!)
+        
+        return popupWebView!
     }
     
-    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async {
-        <#code#>
+    func webViewDidClose(_ webView: WKWebView) {
+        wkWebView.removeFromSuperview()
+        popupWebView = nil
     }
     
-    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async -> Bool {
-        <#code#>
-    }
     
-    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo) async -> String? {
-        <#code#>
-    }
+//
+//    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async {
+//        <#code#>
+//    }
+//
+//    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async -> Bool {
+//        <#code#>
+//    }
+//
+//    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo) async -> String? {
+//        <#code#>
+//    }
 }
 
 //MARK: - WKNavigationDelegate 관련 함수
 extension WebViewController: WKNavigationDelegate {
-
+    
+    //들어온 링크 확인
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        decisionHandler(.allow)
+    }
 }
