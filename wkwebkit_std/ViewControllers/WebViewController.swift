@@ -207,6 +207,15 @@ extension WebViewController: WKNavigationDelegate {
         }
         
         if url.scheme == "https" || url.scheme == "http" {
+            guard let host = url.host else { return }
+            
+            //앱스토어 이동
+            if host.contains("itunes.apple.com") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                decisionHandler(.cancel)
+                return
+            }
+            
             decisionHandler(.allow)
         } else if (url.scheme == "about") {
             print("about:blank")
