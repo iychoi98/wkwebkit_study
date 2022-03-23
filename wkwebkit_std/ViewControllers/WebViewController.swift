@@ -67,6 +67,19 @@ extension WebViewController {
         }
     }
     
+    func changeQueryDictionary(_ query: String) -> [String:String]? {
+        var queryDictionary = [String:String]()
+        
+        for pair in query.components(separatedBy: "&") {
+            let key = pair.components(separatedBy: "=")[0]
+            let value = pair.components(separatedBy: "=")[1]
+            
+            queryDictionary[key] = value
+        }
+        
+        return queryDictionary
+    }
+    
     private func backPage() {
         if wkWebView.canGoBack {
             wkWebView.goBack()
@@ -179,11 +192,18 @@ extension WebViewController: WKUIDelegate {
 //MARK: - WKNavigationDelegate 관련 함수
 extension WebViewController: WKNavigationDelegate {
     
-    //탐색 취소를 허용할 것인지에 대해 결정 (스킴 처리)
+    //웹페이지의 탐색 허용 여부를 결정 (url 응답값 받기 전)
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        print("url 응답 받기 전")
+        
         guard let url = navigationAction.request.url else {
             decisionHandler(.cancel)
             return
+        }
+        
+        if let query = url.query {
+            guard let result = changeQueryDictionary(query) else { return }
+            print("파라미터 \(result)")
         }
         
         if url.scheme == "https" || url.scheme == "http" {
@@ -199,21 +219,31 @@ extension WebViewController: WKNavigationDelegate {
         }
     }
     
-    //응답이 수신된 후 탐색을 허용할지 아니면 취소할지 결정
+    //웹페이지의 탐색 허용 여부를 결정 (url 응답 값 받은 후)
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        print("탐색 허용 및 취소")
+        print("url 응답 받은 후")
         
         decisionHandler(.allow)
     }
     
-    //웹뷰가 웹 컨텐츠를 수신하기 시작했을 때 호출
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print("Commit")
+    //웹 뷰가 컨텐츠 탐색을 시작할 때
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("컨텐츠 탐색 시작 start")
     }
     
-    //웹 뷰에 웹 컨텐츠가 불러와지기 시작할 때
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("StartProvision")
+    //웹 뷰가 콘텐츠를 받기 시작할 때
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print("컨텐츠 받기 시작 commit")
+    }
+    
+    //탐색 완료
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("컨텐츠 받기 완료 finish")
+    }
+    
+    //탐색 실패
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("컨텐츠 받기 실패 fail")
     }
     
     //웹 뷰가 서버 redirect를 수신했을 때 호출
@@ -222,19 +252,9 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     //웹 뷰가 인증 문제에 응답해야할 때 호출
-//    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//        print("인증 문제")
-//    }
-    
-    //탐색 도중 오류가 발생했을 때 호출
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print("탐색 중 오류")
-    }
-    
-    //탐색 완료
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("탐색 완료")
-    }
+    //    func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    //        print("인증 문제")
+    //    }
     
     //웹 컨텐츠 종료
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
